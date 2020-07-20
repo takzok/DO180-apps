@@ -1,4 +1,4 @@
-FROM rhscl/mysql-57-rhel7
+FROM registry.access.redhat.com/rhscl/mysql-57-rhel7
 
 # MySQL image for DO180
 #

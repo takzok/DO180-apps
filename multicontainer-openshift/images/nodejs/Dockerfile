@@ -1,4 +1,4 @@
-FROM    ubi7/ubi:7.7
+FROM    registry.access.redhat.com/ubi7/ubi:7.7
 
 MAINTAINER username <username@example.com>
 

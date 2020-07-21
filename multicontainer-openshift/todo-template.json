@@ -50,31 +50,7 @@
                 "containerPort": 3306,
                 "name": "mysql"
               }
-            ],
-            "volumeMounts": [
-              {
-                "mountPath": "/var/lib/mysql/data",
-                "name": "db-volume"
-              },
-              {
-                "mountPath": "/var/lib/mysql/init",
-                "name": "db-init"
-              }
             ]
-          }
-        ],
-        "volumes": [
-          {
-            "name": "db-volume",
-            "persistentVolumeClaim": {
-              "claimName": "dbclaim"
-            }
-          },
-          {
-            "name": "db-init",
-            "persistentVolumeClaim": {
-              "claimName": "dbinit"
-            }
           }
         ]
       }
@@ -159,40 +135,6 @@
         ],
         "selector": {
           "name": "mysql"
-        }
-      }
-    },
-    {
-      "kind": "PersistentVolumeClaim",
-      "apiVersion": "v1",
-      "metadata": {
-        "name": "dbinit"
-      },
-      "spec": {
-        "accessModes": [
-          "ReadWriteOnce"
-        ],
-        "resources": {
-          "requests": {
-            "storage": "1Mi"
-          }
-        }
-      }
-    },
-    {
-      "kind": "PersistentVolumeClaim",
-      "apiVersion": "v1",
-      "metadata": {
-        "name": "dbclaim"
-      },
-      "spec": {
-        "accessModes": [
-          "ReadWriteOnce"
-        ],
-        "resources": {
-          "requests": {
-            "storage": "10Mi"
-          }
         }
       }
     }

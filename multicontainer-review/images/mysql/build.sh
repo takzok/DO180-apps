@@ -1,3 +1,3 @@
 #!/bin/bash
 
-sudo podman build -t do180/mysql-57-rhel7 .
+docker build -t do180/mysql-57-rhel7 .

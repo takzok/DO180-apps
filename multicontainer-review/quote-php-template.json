@@ -25,7 +25,7 @@
       "spec": {
         "containers": [
           {
-            "image": "quay.io/${RHT_OCP4_QUAY_USER}/do180-mysql-57-rhel7",
+            "image": "quay.io/${RHT_OCP4_QUAY_USER}/mysql-57-rhel7",
             "name": "mysql",
             "env": [
               {
@@ -50,31 +50,7 @@
                 "containerPort": 3306,
                 "name": "mysql"
               }
-            ],
-            "volumeMounts": [
-              {
-                "mountPath": "/var/lib/mysql/data",
-                "name": "db-volume"
-              },
-              {
-                "mountPath": "/var/lib/mysql/init",
-                "name": "db-init"
-              }
             ]
-          }
-        ],
-        "volumes": [
-          {
-            "name": "db-volume",
-            "persistentVolumeClaim": {
-              "claimName": "dbclaim"
-            }
-          },
-          {
-            "name": "db-init",
-            "persistentVolumeClaim": {
-              "claimName": "dbinit"
-            }
           }
         ]
       }
@@ -96,7 +72,7 @@
                 "cpu": "0.5"
               }
             },
-            "image": "quay.io/${RHT_OCP4_QUAY_USER}/do180-quote-php",
+            "image": "quay.io/${RHT_OCP4_QUAY_USER}/quote-php",
             "name": "quote-php",
             "ports": [
               {
@@ -159,40 +135,6 @@
         ],
         "selector": {
           "name": "mysql"
-        }
-      }
-    },
-    {
-      "kind": "PersistentVolumeClaim",
-      "apiVersion": "v1",
-      "metadata": {
-        "name": "dbinit"
-      },
-      "spec": {
-        "accessModes": [
-          "ReadWriteOnce"
-        ],
-        "resources": {
-          "requests": {
-            "storage": "1Mi"
-          }
-        }
-      }
-    },
-    {
-      "kind": "PersistentVolumeClaim",
-      "apiVersion": "v1",
-      "metadata": {
-        "name": "dbclaim"
-      },
-      "spec": {
-        "accessModes": [
-          "ReadWriteOnce"
-        ],
-        "resources": {
-          "requests": {
-            "storage": "10Mi"
-          }
         }
       }
     }

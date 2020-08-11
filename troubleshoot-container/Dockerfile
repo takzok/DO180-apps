@@ -1,4 +1,4 @@
-FROM redhattraining/httpd-parent
+FROM quay.io/redhattraining/httpd-parent
 
 MAINTAINER username <username@example.com>
 
